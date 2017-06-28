@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:body>
+	<ui:composition template="../template/common2.xhtml">
+		<ui:define name="content">
+			<div class="container3">
+				<div class="container">
+					<div class="col s12 m6 l9">
+						<br />
+						<h5 style="color: #26a69a;">Bem vindo</h5>
+						<br />
+						<h:panelGrid>
+							<h:form>
+
+								<h:dataTable var="tarefa" value="#{tarefaCtrl.listaTarefa}"
+									styleClass="striped centered bordered" headerClass="cabecalho"
+									columnClasses="">
+									<h:column>
+										<f:facet name="header">#</f:facet>
+										<h:outputText value="#{tarefa.id}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Descrição</f:facet>
+										<a class="btn orange" href="#modal2">Ver descrição</a>
+										<div id="modal2" class="modal">
+											<div class="modal-content">
+												<h4
+													style="font-size: 20px; text-align: left; color: #26a69a;">Detalhes
+													da descrição</h4>
+												<hr />
+												<h:outputText value="#{tarefa.descricao}"
+													style="margin-right: 55%;" />
+											</div>
+											<div class="modal-footer">
+												<a href="#!"
+													class="modal-action modal-close waves-green btn-flat">Voltar</a>
+											</div>
+										</div>
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Data para realização</f:facet>
+										<h:outputText value="#{tarefa.dataHoraRealizacao}">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:outputText>
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Data de término</f:facet>
+										<h:outputText value="#{tarefa.dataLimite}">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:outputText>
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Responsável</f:facet>
+										<h:outputText value="#{tarefa.user.nome}" />
+									</h:column>
+
+									<h:column>
+										<div class="card-action right-align">
+											<h:commandLink class="btn-floating btn-small orange"
+												style="margin-left:60%;">
+												<i class="large material-icons">mode_edit</i>
+											</h:commandLink>
+
+										</div>
+									</h:column>
+
+									<h:column>
+										<div class="card-action right-align">
+											<h:commandLink class="btn-floating btn-small red"
+												action="#{tarefaCtrl.removerPermanente(tarefa)}">
+												<h5
+													style="margin-right: 12px; font-size: 25px; margin-top: 7px;">X</h5>
+											</h:commandLink>
+
+										</div>
+									</h:column>
+
+								</h:dataTable>
+								<br />
+								<div class="card-action left-align">
+									<a class="modal-trigger waves-effect waves-light btn"
+										href="#modal1">Cadastrar nova tarefa</a>
+								</div>
+
+								<ui:include src="/administrador/cadastrarTarefas.xhtml" />
+
+							</h:form>
+						</h:panelGrid>
+					</div>
+				</div>
+			</div>
+
+			<script src="../resources/js/jquery-3.2.1.min.js"></script>
+			<script src="../resources/js/materialize.js"></script>
+			<script src="../resources/js/init.js"></script>
+			<script>
+			 $(document).ready(function(){
+				    $('.collapsible').collapsible();
+				  });
+			</script>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

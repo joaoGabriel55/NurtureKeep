@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		rel="stylesheet" />
+	<link href="resources/css/materialize.css" type="text/css"
+		rel="stylesheet" media="screen,projection" />
+	<link href="resources/css/style.css" type="text/css" rel="stylesheet"
+		media="screen,projection" />
+	<script src="resources/js/jquery-3.2.1.min.js"></script>
+	<script src="resources/js/materialize.js"></script>
+	<script src="resources/js/init.js"></script>
+	<script src="resources/js/jquery.maskedinput.min.js"></script>
+	<script src="resources/js/jquery.inputmask.date.extensions.js"></script>
+
+</h:head>
+
+<h:body>
+
+	<div id="header">
+		<ui:insert name="header">
+			<ui:include src="/template/header.xhtml" />
+		</ui:insert>
+	</div>
+
+	<div id="content">
+		<ui:insert name="content"></ui:insert>
+	</div>
+
+	<div id="footer">
+		<ui:insert name="footer">
+			<ui:include src="/template/footer.xhtml" />
+		</ui:insert>
+	</div>
+
+</h:body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:body>
+	<ui:composition template="/template/common.xhtml">
+		<ui:define name="content">
+
+			<h:form>
+				<div id="index-banner" class="parallax-container">
+					<div class="section no-pad-bot">
+						<div class="container">
+
+							<h1 class="header center orange-text text-lighten-2">Nurture
+								Keep</h1>
+							<div class="row center">
+								<h5 class="header col s12 light" style="color: white;">Cuide
+									da saúde alimentar de seus bovinos de forma inteligente</h5>
+							</div>
+							<div class="card-action row center">
+								<h:commandLink
+									class="modal-trigger waves-effect waves-light btn-large orange"
+									value="Entrar" action="publico/login" />
+							</div>
+						</div>
+					</div>
+					<div class="parallax">
+						<img src="resources/imagens/bovina2.png"
+							alt="Unsplashed background img 1" />
+					</div>
+				</div>
+
+				<footer class="page-footer orange">
+				<div class="container">
+					<div class="row">
+						<div class="col l6 s12">
+							<h5 class="white-text">Sobre</h5>
+							<p class="grey-text text-lighten-4">Gerencie suas tarefas de
+								forma simples e eficaz em sua fazenda. Tenha controle da
+								alimentação e atividades de cada um de seus bovinos. Tudo isso é
+								possivel graças ao Nurture Keep.</p>
+						</div>
+						<div class="col l3 s12"></div>
+						<div class="col l3 s12"></div>
+					</div>
+				</div>
+
+				</footer>
+			</h:form>
+
+			<!--  Scripts-->
+			<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+			<script src="resources/js/materialize.js"></script>
+			<script src="resources/js/init.js"></script>
+			<script>
+				$(document).ready(function(){
+				      $('.parallax').parallax();
+				    });
+			</script>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:body>
+	<ui:composition template="../template/common2.xhtml">
+		<ui:define name="content">
+			<div class="container3">
+				<div class="container">
+					<div class="col s12 m6 l9">
+						<br />
+						<h5 style="color: #26a69a;">Bem vindo</h5>
+						<br />
+						<h:panelGrid>
+							<h:form>
+								<h:dataTable var="alimento"
+									value="#{alimentoCtrl.listaAlimento}"
+									styleClass="striped centered bordered" headerClass="cabecalho"
+									columnClasses="">
+									<h:column>
+										<f:facet name="header">#</f:facet>
+										<h:outputText value="#{alimento.id}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Nome do alimento</f:facet>
+										<h:outputText value="#{alimento.nome}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Quantidade</f:facet>
+										<h:outputText value="#{alimento.quantidade}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Preço unitário (R$)</f:facet>
+										<h:outputText value="#{alimento.preco}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Peso (kg)</f:facet>
+										<h:outputText value="#{alimento.peso}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Proteínas (g)</f:facet>
+										<h:outputText value="#{alimento.proteinas}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Sódio (g)</f:facet>
+										<h:outputText value="#{alimento.sodio}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Caboidratos (g)</f:facet>
+										<h:outputText value="#{alimento.carboidratos}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Gorduras totais (g)</f:facet>
+										<h:outputText value="#{alimento.gordurasTotais}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Fibra alimentar (g)</f:facet>
+										<h:outputText value="#{alimento.fibraAlimentar}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Valor energético (g)</f:facet>
+										<h:outputText
+											value="#{(alimento.carboidratos * 4) + (alimento.proteinas * 4) + (alimento.gordurasTotais * 9)}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Data de fabricação</f:facet>
+										<h:outputText value="#{alimento.fabricacao}">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:outputText>
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Data de validade</f:facet>
+										<h:outputText value="#{alimento.validade}">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:outputText>
+									</h:column>
+
+								</h:dataTable>
+								<br />
+								<h:commandButton action="indexUser" value="Voltar"
+									class="waves-effect waves-green btn" />
+
+							</h:form>
+						</h:panelGrid>
+					</div>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

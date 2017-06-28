@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+
+<ui:composition>
+	<!-- Modal Structure -->
+	<div id="modal1" class="modal">
+		<h:form>
+			<h5 class="card-title"
+				style="color: #26a69a; text-align: center; font-size: 30px">Registro
+				de Tarefas</h5>
+			<div class="card white darken-1" style="margin: 5%;">
+
+				<div class="header center black-text text-lighten-1">
+
+					<div class="row" style="margin: 5%;">
+						<div class="col s12 input-field">
+							<h:inputTextarea id="textarea1"
+								value="#{tarefaCtrl.tarefa.descricao}"
+								styleClass="materialize-textarea" />
+							<h:outputLabel value="Descrição da tarefa" />
+						</div>
+
+						<div class="input-field col s12">
+							<h:selectOneMenu id="iterator" value="#{tarefaCtrl.tarefa.user}"
+								converter="omnifaces.SelectItemsConverter">
+								<f:selectItem itemLabel="Escolha um usuario"
+									noSelectionOption="true" />
+								<f:selectItems value="#{usuarioCtrl.listausers}" var="entity"
+									itemLabel="#{entity.nome}" itemValue="#{entity}" />
+							</h:selectOneMenu>
+							<h:outputLabel
+								value="Selecione o responsável pela realização da tarefa" />
+						</div>
+
+						<div class="col s12 input-field">
+							<h:inputText id="realizacao" styleClass="date"
+								value="#{tarefaCtrl.tarefa.dataHoraRealizacao}">
+								<f:convertDateTime pattern="dd/MM/yyyy"
+									timeZone="America/Sao_Paulo" />
+							</h:inputText>
+							<h:outputLabel value="Data de realização (dd/MM/yyyy)" />
+						</div>
+
+						<div class="col s12 input-field">
+							<h:inputText id="limite" styleClass="date"
+								value="#{tarefaCtrl.tarefa.dataLimite}">
+								<f:convertDateTime pattern="dd/MM/yyyy"
+									timeZone="America/Sao_Paulo" />
+							</h:inputText>
+							<h:outputLabel value="Data limite (dd/MM/yyyy)" />
+						</div>
+
+
+					</div>
+
+					<div class="card-action right-align">
+						<h:commandButton class="waves-effect waves-green btn"
+							value="Cadastrar" action="#{tarefaCtrl.salvar()}"
+							onclick="alert('Pressione ok para confimar o cadastro')" />
+
+						<!-- Problema na hora de volta para login -->
+						<h:commandButton class="waves-effect waves-red btn red"
+							value="Cancelar" action="indexAdmin" />
+
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</div>
+
+	<script src="../resources/js/jquery-3.2.1.min.js"></script>
+	<script src="../resources/js/materialize.js"></script>
+	<script src="../resources/js/init.js"></script>
+
+	<script>
+
+			$('.modal').modal({
+			      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+			      opacity: .5, // Opacity of modal background
+			      inDuration: 300, // Transition in duration
+			      outDuration: 200, // Transition out duration
+			      startingTop: '4%', // Starting top style attribute
+			      endingTop: '10%', // Ending top style attribute
+			      ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+			        
+			        console.log(modal, trigger);
+			      }
+			    }
+			  );
+			</script>
+
+	<script>
+	  $(document).ready(function() {
+		    $('select').material_select();
+		  });
+
+	  $('#textarea1').val('New Text');
+	  $('#textarea1').trigger('autoresize');
+	</script>
+
+</ui:composition>
+</html>

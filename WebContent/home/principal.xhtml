@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:body>
+	<ui:composition template="../template/common2.xhtml">
+		<ui:define name="content">
+			<div class="container3">
+				<div class="container">
+
+					<h:panelGroup
+						rendered="#{request.isUserInRole('ROLE_ADMINISTRADOR')}">
+						<div class="col s12 m12 l9">
+							<br />
+							<h5 style="color: #26a69a;">Bem vindo</h5>
+							<br />
+							<h:form>
+								<div id="card-container" class="row">
+									<!-- Col: Card 1 -->
+									<div class="col s12 m6 l4">
+										<!-- Card 1 -->
+										<div class="card white">
+											<div class="card-content white-text">
+
+												<span class="card-title cyan-text text-darken-3"><i
+													class="small material-icons">description</i>Tarefas</span>
+
+												<p class="card-subtitle grey-text text-darken-2">
+													Consultar tarefas a serem realizadas e cadastrar novas
+													tarefas.</p>
+
+											</div>
+											<div class="card-action">
+												<h:commandLink action="/administrador/verTarefas">Consultar tarefas</h:commandLink>
+
+											</div>
+										</div>
+									</div>
+									<!-- End of card -->
+
+									<div class="col s12 m6 l4">
+										<!-- Card 1 -->
+										<div class="card white">
+											<div class="card-content white-text">
+
+												<span class="card-title cyan-text text-darken-3"><i
+													class="small material-icons">list</i>Animais</span>
+
+												<p class="card-subtitle grey-text text-darken-2">
+													Alimentos para os animais, que estão disponíveis no
+													estoque.</p>
+
+											</div>
+											<div class="card-action">
+												<h:commandLink action="/administrador/verAnimais">VER ANIMAIS</h:commandLink>
+
+											</div>
+										</div>
+									</div>
+									<!-- End of card -->
+
+									<!-- Card 1 -->
+									<div class="col s12 m6 l4">
+										<div class="card white">
+											<div class="card-content white-text">
+
+												<span class="card-title cyan-text text-darken-3"><i
+													class="small material-icons">assignment</i>Alimentos</span>
+
+												<p class="card-subtitle grey-text text-darken-2">Defina
+													e consulte os alimentos para os seus animais.</p>
+
+											</div>
+											<div class="card-action">
+												<h:commandLink action="/administrador/verAlimentos">Ver alimentos</h:commandLink>
+												<br />
+
+											</div>
+										</div>
+									</div>
+									<!-- End of card -->
+								</div>
+							</h:form>
+						</div>
+					</h:panelGroup>
+
+					<h:panelGroup rendered="#{request.isUserInRole('ROLE_USUARIO')}">
+						<div class="col s12 m12 l9">
+							<br />
+							<h5 style="color: #26a69a;">Bem vindo</h5>
+							<br />
+
+							<div id="card-container" class="row">
+								<!-- Col: Card 1 -->
+								<div class="col s12 m6 l4">
+									<!-- Card 1 -->
+									<div class="card white">
+										<div class="card-content white-text">
+
+											<span class="card-title cyan-text text-darken-3"><i
+												class="small material-icons">assignment</i>Tarefas</span>
+
+											<p class="card-subtitle grey-text text-darken-2">Tarefas
+												a serem realizadas ao longo do dia.</p>
+
+										</div>
+										<div class="card-action">
+											<a href="#">Ver tarefas</a>
+
+										</div>
+									</div>
+									<!-- End of card -->
+								</div>
+								<!-- End of col -->
+								<!-- Col: Card 1 -->
+								<div class="col s12 m6 l4">
+									<!-- Card 1 -->
+									<div class="card white">
+										<div class="card-content white-text">
+
+											<span class="card-title cyan-text text-darken-3"><i
+												class="small material-icons">list</i>Alimentos</span>
+
+											<p class="card-subtitle grey-text text-darken-2">
+												Alimentos para os animais, que estão disponíveis no estoque.
+
+											</p>
+
+										</div>
+										<div class="card-action">
+											<h:commandLink action="/usuario/verAlimentos"
+												value="VER ALIMENTOS" />
+										</div>
+									</div>
+									<!-- End of card -->
+								</div>
+								<!-- Col: Card 1 -->
+								<div class="col s12 m6 l4">
+									<!-- Card 1 -->
+									<div class="card white">
+										<div class="card-content white-text">
+
+											<span class="card-title cyan-text text-darken-3"><i
+												class="small material-icons">pageview</i>Animais</span>
+
+											<p class="card-subtitle grey-text text-darken-2">Veja as
+												características de cada animal e sua situação atual.</p>
+
+										</div>
+										<div class="card-action">
+											<a href="#">VER ANIMAIS</a>
+										</div>
+									</div>
+									<!-- End of card -->
+								</div>
+
+							</div>
+						</div>
+					</h:panelGroup>
+
+					<h:panelGroup rendered="#{request.isUserInRole('ROLE_FORNECEDOR')}">
+						<div class="col s12 m6 l9">
+							<br />
+							<h5 style="color: #26a69a;">Bem vindo</h5>
+							<br />
+							<h:form>
+								<h:dataTable var="alimento"
+									value="#{alimentoCtrl.listaAlimento}"
+									styleClass="striped centered bordered" headerClass="cabecalho"
+									rendered="#{alimentoCtrl.listaAlimento.size() !=0}">
+									<h:column>
+										<f:facet name="header">#</f:facet>
+										<h:outputText value="#{alimento.id}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Nome do alimento</f:facet>
+										<h:outputText value="#{alimento.nome}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Quantidade</f:facet>
+										<h:outputText value="#{alimento.quantidade}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Preço unitário (R$)</f:facet>
+										<h:outputText value="#{alimento.preco}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Peso (kg)</f:facet>
+										<h:outputText value="#{alimento.peso}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Proteínas (g)</f:facet>
+										<h:outputText value="#{alimento.proteinas}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Sódio (g)</f:facet>
+										<h:outputText value="#{alimento.sodio}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Caboidratos (g)</f:facet>
+										<h:outputText value="#{alimento.carboidratos}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Gorduras totais (g)</f:facet>
+										<h:outputText value="#{alimento.gordurasTotais}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Fibra alimentar (g)</f:facet>
+										<h:outputText value="#{alimento.fibraAlimentar}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Valor energético (kcal)</f:facet>
+										<h:outputText
+											value="#{(alimento.carboidratos * 4) + (alimento.proteinas * 4) + (alimento.gordurasTotais * 9)}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Data de fabricação</f:facet>
+										<h:outputText value="#{alimento.fabricacao}">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:outputText>
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Data de validade</f:facet>
+										<h:outputText value="#{alimento.validade}">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:outputText>
+									</h:column>
+
+									<h:column>
+										<div class="card-action right-align">
+											<h:commandLink class="btn-floating btn-small orange"
+												target="blank" title="Editar">
+												<i class="large material-icons">mode_edit</i>
+											</h:commandLink>
+
+										</div>
+									</h:column>
+
+									<h:column>
+										<div class="card-action right-align">
+											<h:commandLink class="btn-floating btn-small red"
+												action="#{alimentoCtrl.removerPermanente(alimento)}"
+												target="blank" title="Remover">
+												<h5
+													style="margin-right: 12px; font-size: 25px; margin-top: 7px;">X</h5>
+											</h:commandLink>
+
+										</div>
+									</h:column>
+
+								</h:dataTable>
+								<br />
+								<div class="card-action left-align">
+									<a class="modal-trigger waves-effect waves-light btn"
+										href="#modal1">Cadastrar novo alimento</a>
+								</div>
+
+								<ui:include src="/fornecedor/cadastrarAlimento.xhtml" />
+
+							</h:form>
+						</div>
+					</h:panelGroup>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

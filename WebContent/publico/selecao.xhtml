@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:mp="http://primefaces.org/ui/material"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:body>
+	<ui:composition template="../template/common.xhtml">
+		<ui:define name="content">
+			<div class="container2">
+				<div class="container" style="margin-left: 25%;">
+					<h:form>
+						<br />
+						<h5 style="color: #26a69a;">Selecione seu tipo de usuário</h5>
+						<br />
+
+						<div id="card-container" class="row">
+							<div class="col s12 m6 l4">
+								<!-- Card 1 -->
+								<div class="card white">
+									<div class="card-content white-text">
+
+										<span class="card-title cyan-text text-darken-3"><i
+											class="small material-icons">perm_identity</i>Usuário comum</span>
+
+										<p class="card-subtitle grey-text text-darken-2">Como
+											usuário comum você poderá ser acesso as ações de: tarefas e
+											consultas de animais e fornecedores</p>
+
+									</div>
+									<div class="card-action">
+										<h:commandLink action="cadastrarUsuario" value="Cadastrar-se" />
+									</div>
+								</div>
+							</div>
+							<!-- End of card -->
+							<!-- Card 2 -->
+							<div class="col s12 m6 l4">
+								<div class="card white">
+									<div class="card-content white-text">
+
+										<span class="card-title cyan-text text-darken-3"><i
+											class="small material-icons">assignment_ind</i>Fornecedor</span>
+
+										<p class="card-subtitle grey-text text-darken-2">Como
+											fornecedor você terá acesso as ações de: registrar e
+											consultar os alimentos de sua empresa</p>
+
+									</div>
+									<div class="card-action">
+										<h:commandLink action="cadastrarFornecedor"
+											value="Cadastrar-se" />
+									</div>
+								</div>
+								<!-- End of card -->
+							</div>
+						</div>
+					</h:form>
+				</div>
+
+			</div>
+
+
+			<script src="resources/js/jquery-3.2.1.min.js"></script>
+			<script src="resources/js/materialize.js"></script>
+			<script src="resources/js/materialize.min.js"></script>
+			<script src="resources/js/init.js"></script>
+			<script src="resources/js/jquery.maskedinput.js"
+				type="text/javascript"></script>
+
+			<script>
+				$('.datepicker').pickadate({
+
+					selectMonths: true,
+					selectYears: 15
+				});
+
+				 $('#tel').mask('(99) 99999-9999');
+
+				 $('#cpf').mask('999.999.999-99');
+				 
+			</script>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

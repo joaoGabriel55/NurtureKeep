@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:mp="http://primefaces.org/ui/material"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<ui:composition template="../template/common.xhtml">
+		<ui:define name="content">
+
+			<div class="container2">
+				<div class="materialize-white lighten-2">
+					<div class="row"></div>
+					<div class="row"></div>
+					<div class="row">
+						<div class="col s12 m12 l6 offset-l3">
+							<h:form>
+								<h:messages style="color:red; font-weight: 900" />
+								<h5 class="card-title"
+									style="color: #26a69a; text-align: center; font-size: 30px">Cadastramento
+									de usuário</h5>
+								<div class="card white darken-1">
+
+									<div class="header center black-text text-lighten-1">
+
+										<div class="row">
+											<div class="col s12 input-field">
+												<h:inputText id="nome" value="#{usuarioCtrl.usuario.nome}"
+													type="text" />
+												<h:outputLabel value="Nome completo" />
+											</div>
+
+											<div class="col s12 input-field">
+												<h:inputText id="data" styleClass="campoData"
+													value="#{usuarioCtrl.usuario.dataNascimento}" type="text"
+													requiredMessage="Campo data não informado" required="true">
+													<f:convertDateTime pattern="dd/MM/yyyy"
+														timeZone="America/Sao_Paulo" />
+												</h:inputText>
+												<h:outputLabel value="Data de nascimento" />
+											</div>
+
+											<div class="col s12 input-field">
+												<h:inputText id="email" value="#{usuarioCtrl.usuario.email}">
+													<f:validateRegex
+														pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+" />
+												</h:inputText>
+												<h:outputLabel value="Email" />
+											</div>
+
+											<div class="col s12 input-field">
+												<h:inputText id="cpf" styleClass="campoCpf"
+													value="#{usuarioCtrl.usuario.cpf}" type="text"
+													requiredMessage="Campo CPF não informado" required="true" />
+												<h:outputLabel value="CPF" />
+
+											</div>
+
+											<div class="col s12 input-field">
+												<h:inputText id="tel" styleClass="campoTelefone"
+													value="#{usuarioCtrl.usuario.telefone}" type="text"
+													requiredMessage="Campo telefone não informado"
+													required="true" />
+												<h:outputLabel value="Telefone" />
+											</div>
+
+											<div class="col s12 input-field">
+												<h:inputSecret id="senha"
+													value="#{usuarioCtrl.usuario.senha}" size="10"
+													maxlength="10" required="true" redisplay="true" />
+												<h:outputLabel value="Senha (máximo 10 caracteres)" />
+											</div>
+
+											<div class="col s12 input-field">
+												<h:inputSecret id="resenha"
+													value="#{usuarioCtrl.confirmarSenha}" size="10"
+													maxlength="10" required="true" redisplay="true"
+													requiredMessage="Campo repete senha não informado" />
+												<h:outputLabel value="Repita a senha" />
+											</div>
+
+										</div>
+
+										<div class="card-action right-align">
+
+											<a class="waves-effect waves-light btn" href="#modal1">Cadastrar</a>
+
+											<!-- Modal Structure -->
+											<div id="modal1" class="modal">
+												<div class="modal-content">
+													<h4>Confirmar cadastro?</h4>
+													<p>Tem certeza dos dados informados?</p>
+												</div>
+												<div class="modal-footer">
+													<h:commandButton class="waves-effect waves-green btn"
+														value="Confirmar" action="#{usuarioCtrl.salvar()}">
+													</h:commandButton>
+												</div>
+											</div>
+
+											<!-- Problema na hora de volta para login -->
+											<h:commandButton class="waves-effect waves-red btn red"
+												value="Cancelar" action="selecao" />
+
+										</div>
+									</div>
+								</div>
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<script>
+				$(document).ready(function(){
+				  // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+				  $('.modal').modal();
+				});
+			</script>
+
+			<script>
+				jQuery(function($){
+					$(".campoData").mask("99/99/9999");
+					$(".campoTelefone").mask("(99) 9999-9999");
+					$(".campoCpf").mask("999.999.999-99");
+				});
+			</script>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Nurture Keep</title>
+
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		rel="stylesheet" />
+	<link href="resources/css/materialize.css" type="text/css"
+		rel="stylesheet" media="screen,projection" />
+	<link href="resources/css/style.css" type="text/css" rel="stylesheet"
+		media="screen,projection" />
+	<link rel="shortcut icon" type="image/x-icon"
+		href="../resources/imagens/faviconNK.ico" />
+</h:head>
+
+<h:body>
+	<h:form>
+		<nav class="white" role="navigation">
+		<div class="nav-wrapper container">
+			<h:commandLink action="index" class="brand-logo">Nurture Keep</h:commandLink>
+			<ul class="right hide-on-med-and-down">
+				<li></li>
+				<li><h:commandLink immediate="true"
+						action="#{loginCtrl.sair()}">Logout</h:commandLink></li>
+			</ul>
+
+			<ul id="nav-mobile" class="side-nav">
+				<li><a href="#">Cadastra-se</a></li>
+			</ul>
+			<a href="#" data-activates="nav-mobile" class="button-collapse"><i
+				class="material-icons">menu</i></a>
+		</div>
+		</nav>
+	</h:form>
+</h:body>
+</html>
