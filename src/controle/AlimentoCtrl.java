@@ -8,7 +8,6 @@ import javax.faces.bean.SessionScoped;
 import dao.AlimentoDAO;
 
 import daoImplementation.AlimentoDAOimp;
-
 import modelo.Alimento;
 
 @ManagedBean
@@ -19,9 +18,15 @@ public class AlimentoCtrl {
 	private List<Alimento> listaAlimento;
 
 	public AlimentoCtrl() {
-		this.alimento = new Alimento();
+		this.alimento = new Alimento.Builder(alimento.getNome(), alimento.getFabricacao(), alimento.getValidade(),
+				alimento.getFornecedor()).build();
 		AlimentoDAO alimentodao = new AlimentoDAOimp();
 		this.listaAlimento = alimentodao.listAll();
+	}
+
+	public void reset() {
+		this.alimento = new Alimento.Builder(alimento.getNome(), alimento.getFabricacao(), alimento.getValidade(),
+				alimento.getFornecedor()).build();
 	}
 
 	public Alimento getAlimento() {
@@ -48,7 +53,7 @@ public class AlimentoCtrl {
 
 		alimentodao.save(this.alimento);
 
-		this.alimento = new Alimento();
+		reset();
 	}
 
 	public void removerPermanente(Alimento alimento) {

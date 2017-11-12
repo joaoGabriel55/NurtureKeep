@@ -76,27 +76,98 @@ public class Alimento implements Serializable {
 	@Column(nullable = true)
 	private Date dataRemocao;
 
-	public Alimento(List<Fornecedor> fornecedor, String nome, Integer quantidade, Double peso, Double preco,
-			Date validade, Date fabricacao, Double carboidratos, Double proteinas, Double gordurasTotais,
-			Double fibraAlimentar, Double sodio, Double valorEnergetico, Date dataRemocao) {
+	public Alimento(Builder builder) {
 		super();
-		this.fornecedor = fornecedor;
-		this.nome = nome;
-		this.quantidade = quantidade;
-		this.peso = peso;
-		this.preco = preco;
-		this.validade = validade;
-		this.fabricacao = fabricacao;
-		this.carboidratos = carboidratos;
-		this.proteinas = proteinas;
-		this.gordurasTotais = gordurasTotais;
-		this.fibraAlimentar = fibraAlimentar;
-		this.sodio = sodio;
-		this.valorEnergetico = valorEnergetico;
-		this.dataRemocao = dataRemocao;
+		this.fornecedor = builder.fornecedores;
+		this.nome = builder.nome;
+		this.quantidade = builder.quantidade;
+		this.peso = builder.peso;
+		this.preco = builder.preco;
+		this.validade = builder.validade;
+		this.fabricacao = builder.fabricacao;
+		this.carboidratos = builder.carboidratos;
+		this.proteinas = builder.proteinas;
+		this.gordurasTotais = builder.gordurasTotais;
+		this.fibraAlimentar = builder.fibraAlimentar;
+		this.sodio = builder.sodio;
+		this.valorEnergetico = builder.valorEnergetico;
+		this.dataRemocao = builder.dataRemocao;
 	}
 
-	public Alimento() {
+	public static class Builder {
+		private String nome;
+		private Date validade;
+		private List<Fornecedor> fornecedores;
+		private Integer quantidade;
+		private Double peso = new Double(0);
+		private Double preco = new Double(0);
+		private Date fabricacao;
+		private Double carboidratos = new Double(0);
+		private Double proteinas = new Double(0);
+		private Double gordurasTotais = new Double(0);
+		private Double fibraAlimentar = new Double(0);
+		private Double sodio = new Double(0);
+		private Double valorEnergetico;
+		private Date dataRemocao;
+
+		public Builder(String nome, Date fabricacao, Date validade, List<Fornecedor> fornecedores) {
+			if (nome == null || fabricacao == null || validade == null || fornecedores == null)
+				throw new IllegalArgumentException("Nome, fabricação, validadade ou fornecedor não podem ser vazio!");
+
+			this.nome = nome;
+			this.fabricacao = fabricacao;
+			this.validade = validade;
+			this.fornecedores = fornecedores;
+		}
+
+		public Builder comQuantidade(Integer quantidade) {
+			this.quantidade = quantidade;
+			return this;
+		}
+
+		public Builder comPeso(Double peso) {
+			this.peso = peso;
+			return this;
+		}
+
+		public Builder comPreco(Double preco) {
+			this.preco = preco;
+			return this;
+		}
+
+		public Builder comCarboidratos(Double carboidratos) {
+			this.carboidratos = carboidratos;
+			return this;
+		}
+
+		public Builder comProteina(Double proteinas) {
+			this.proteinas = proteinas;
+			return this;
+		}
+
+		public Builder comGordurasTotais(Double gordurasTotais) {
+			this.gordurasTotais = gordurasTotais;
+			return this;
+		}
+
+		public Builder comFribaAlimentar(Double fibraAlimentar) {
+			this.fibraAlimentar = fibraAlimentar;
+			return this;
+		}
+
+		public Builder comSodio(Double sodio) {
+			this.sodio = sodio;
+			return this;
+		}
+
+		public Builder comValorEnergetico(Double valorEnergetico) {
+			this.valorEnergetico = valorEnergetico;
+			return this;
+		}
+
+		public Alimento build() {
+			return new Alimento(this);
+		}
 
 	}
 
