@@ -7,21 +7,22 @@
 <h:body>
 	<ui:composition template="/template/common.xhtml">
 		<ui:define name="content">
-			<h:panelGroup rendered="#{!empty param.login_error}">
-				<span style="font-color: red"> Erro ao efetuar o login.</span>
-				<br />
-				<br />
-				Motivo: #{SPRING_SECURITY_LAST_EXCEPTION.message}
-			</h:panelGroup>
+
 
 			<form id="login" method="post"
 				action="#{request.contextPath}/j_spring_security_check">
-
 				<div class="container">
 					<div class="card-panel white"
 						style="margin-right: 100px; margin-bottom: 30px; margin-top: 30px; margin-left: 100px; padding-bottom: 62px;">
 						<h5 class="card-title"
 							style="color: #26a69a; text-align: center; font-size: 28px">Login</h5>
+						<h:panelGroup rendered="#{!empty param.login_error}">
+							<span style="color: red; margin-left: 40%;"> Erro ao
+								efetuar o login.</span>
+							<br />
+							<span style="color: red; margin-left: 40%;">Motivo:
+								#{SPRING_SECURITY_LAST_EXCEPTION.message}</span>
+						</h:panelGroup>
 						<div class="header center black-text text-lighten-1">
 
 							<div class="row">

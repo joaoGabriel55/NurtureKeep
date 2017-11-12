@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "alimento")
@@ -26,36 +27,47 @@ public class Alimento implements Serializable {
 	private List<Fornecedor> fornecedor;
 
 	@Column(name = "nome", length = 50, nullable = true)
+	@NotNull(message = "Campo nome não preenchido.")
 	private String nome;
 
 	@Column(nullable = false)
+	@NotNull(message = "Campo quantidade não preenchido.")
 	private Integer quantidade;
 
 	@Column(nullable = false)
+	@NotNull(message = "Campo peso não preenchido.")
 	private Double peso = new Double(0);
 
 	@Column(nullable = false)
+	@NotNull(message = "Campo preco não preenchido.")
 	private Double preco = new Double(0);
 
 	@Column(nullable = false)
+	@NotNull(message = "Campo data de validade não preenchido.")
 	private Date validade;
 
 	@Column(nullable = false)
+	@NotNull(message = "Campo data de fabricacao não preenchido.")
 	private Date fabricacao;
 
 	@Column(nullable = true)
+	@NotNull(message = "Campo carboidratos não preenchido.")
 	private Double carboidratos = new Double(0);
 
 	@Column(nullable = true)
+	@NotNull(message = "Campo proteinas não preenchido.")
 	private Double proteinas = new Double(0);
 
 	@Column(nullable = true)
+	@NotNull(message = "Campo gordurasTotais não preenchido.")
 	private Double gordurasTotais = new Double(0);
 
 	@Column(nullable = true)
+	@NotNull(message = "Campo fibraAlimentar não preenchido.")
 	private Double fibraAlimentar = new Double(0);
 
 	@Column(nullable = true)
+	@NotNull(message = "Campo sodio não preenchido.")
 	private Double sodio = new Double(0);
 
 	@Column(nullable = true)

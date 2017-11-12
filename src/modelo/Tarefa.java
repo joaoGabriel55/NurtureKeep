@@ -23,11 +23,9 @@ public class Tarefa implements Serializable {
 	private String descricao;
 
 	@Column(nullable = false)
-	@NotNull(message = "Campo data de realização não preenchido.")
 	private Date dataHoraRealizacao;
 
 	@Column(nullable = false)
-	@NotNull(message = "Campo data limite não preenchido.")
 	private Date dataLimite;
 
 	@Column(nullable = true)

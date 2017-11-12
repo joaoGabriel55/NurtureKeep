@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "animal")
@@ -21,6 +22,7 @@ public class Animal implements Serializable {
 	private int id;
 
 	@Column(length = 15, nullable = false)
+	@NotNull(message = "Campo apelido não preenchido.")
 	private String apelido;
 
 	@Column(nullable = false)
@@ -30,12 +32,15 @@ public class Animal implements Serializable {
 	private Date dataRemocao;
 
 	@Column(nullable = false)
+	@NotNull(message = "Campo raça não preenchido.")
 	private String raca;
 
 	@Column(nullable = false)
+	@NotNull(message = "Campo peso não preenchido.")
 	private Double peso;
 
 	@Column(nullable = false)
+	@NotNull(message = "Campo altura não preenchido.")
 	private Double altura;
 
 	@Column(nullable = false)

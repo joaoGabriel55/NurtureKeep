@@ -9,10 +9,12 @@
 <ui:composition>
 	<!-- Modal Structure -->
 	<div id="modal1" class="modal">
+
+		<h5 class="card-title"
+			style="color: #26a69a; text-align: center; font-size: 30px">Registro
+			de Tarefas</h5>
 		<h:form>
-			<h5 class="card-title"
-				style="color: #26a69a; text-align: center; font-size: 30px">Registro
-				de Tarefas</h5>
+			<h:messages style="color:red; font-weight: 900; margin-left:50px;" />
 			<div class="card white darken-1" style="margin: 5%;">
 
 				<div class="header center black-text text-lighten-1">
@@ -38,8 +40,9 @@
 						</div>
 
 						<div class="col s12 input-field">
-							<h:inputText id="realizacao" styleClass="date"
-								value="#{tarefaCtrl.tarefa.dataHoraRealizacao}">
+							<h:inputText id="realizacao" styleClass="campoData" type="text"
+								requiredMessage="Campo data de realização não informado"
+								required="true" value="#{tarefaCtrl.tarefa.dataHoraRealizacao}">
 								<f:convertDateTime pattern="dd/MM/yyyy"
 									timeZone="America/Sao_Paulo" />
 							</h:inputText>
@@ -47,8 +50,9 @@
 						</div>
 
 						<div class="col s12 input-field">
-							<h:inputText id="limite" styleClass="date"
-								value="#{tarefaCtrl.tarefa.dataLimite}">
+							<h:inputText id="limite" styleClass="campoData" type="text"
+								requiredMessage="Campo data limite não informado"
+								required="true" value="#{tarefaCtrl.tarefa.dataLimite}">
 								<f:convertDateTime pattern="dd/MM/yyyy"
 									timeZone="America/Sao_Paulo" />
 							</h:inputText>
@@ -102,6 +106,12 @@
 	  $('#textarea1').val('New Text');
 	  $('#textarea1').trigger('autoresize');
 	</script>
+
+	<script>
+				jQuery(function($){
+					$(".campoData").mask("99/99/9999");
+				});
+			</script>
 
 </ui:composition>
 </html>

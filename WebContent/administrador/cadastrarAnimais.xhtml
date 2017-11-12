@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
 
 <ui:composition>
 	<!-- Modal Structure -->
@@ -11,72 +13,59 @@
 		<h5 class="card-title"
 			style="color: #26a69a; text-align: center; font-size: 30px">Registro
 			de animais</h5>
-		<div class="card white darken-1" style="margin: 5%;">
+		<h:form>
+			<h:messages style="color:red; font-weight: 900; margin-left:50px;" />
+			<div class="card white darken-1" style="margin: 5%;">
 
-			<div class="header center black-text text-lighten-1">
+				<div class="header center black-text text-lighten-1">
 
+					<div class="row" style="margin: 5%;">
 
+						<div class="col s12 input-field">
+							<h:inputText value="#{animalCtrl.animal.raca}" />
+							<h:outputLabel value="Raça ou linhagem do animal" />
+						</div>
 
-				<div class="row" style="margin: 5%;">
+						<div class="col s12 input-field">
+							<h:inputText value="#{animalCtrl.animal.apelido}" />
+							<h:outputLabel value="Apelido do animal" />
+						</div>
 
-					<div class="col s12 input-field">
-						<h:inputText value="#{animalCtrl.animal.raca}" />
-						<h:outputLabel value="Raça ou linhagem do animal" />
+						<div class="col s12 input-field">
+							<h:inputText id="limite" styleClass="campoData" type="text"
+								requiredMessage="Campo data não informado" required="true"
+								value="#{animalCtrl.animal.dataNascimento}">
+								<f:convertDateTime pattern="dd/MM/yyyy"
+									timeZone="America/Sao_Paulo" />
+							</h:inputText>
+							<h:outputLabel value="Data de nascimento (dd/MM/yyyy)" />
+						</div>
+
+						<div class="col s12 input-field">
+							<h:inputText id="fibra" value="#{animalCtrl.animal.altura}"
+								onkeyup="somenteNumeros(this);" />
+							<h:outputLabel value="Altura (m)" />
+						</div>
+
+						<div class="col s12 input-field">
+							<h:inputText id="proteinas" value="#{animalCtrl.animal.peso}"
+								onkeyup="somenteNumeros(this);" />
+							<h:outputLabel value="Peso (kg)" />
+						</div>
 					</div>
 
-					<div class="col s12 input-field">
-						<h:inputText value="#{animalCtrl.animal.apelido}" />
-						<h:outputLabel value="Apelido do animal" />
+					<div class="card-action right-align">
+						<h:commandButton class="waves-effect waves-green btn"
+							value="Cadastrar" action="#{animalCtrl.salvar()}"
+							onclick="alert('Pressione ok para confimar o cadastro')" />
+
+						<!-- Problema na hora de volta para login -->
+						<h:commandButton class="waves-effect waves-red btn red"
+							value="Cancelar" action="verAnimais" />
 					</div>
-
-					<div class="col s12 input-field">
-						<h:inputText id="limite" styleClass="date"
-							value="#{animalCtrl.animal.dataNascimento}">
-							<f:convertDateTime pattern="dd/MM/yyyy"
-								timeZone="America/Sao_Paulo" />
-						</h:inputText>
-						<h:outputLabel value="Data de nascimento (dd/MM/yyyy)" />
-					</div>
-
-					<div class="col s12 input-field">
-						<h:inputText id="fibra" value="#{animalCtrl.animal.altura}"
-							onkeyup="somenteNumeros(this);" />
-						<h:outputLabel value="Altura (m)" />
-					</div>
-
-					<div class="col s12 input-field">
-						<h:inputText id="proteinas" value="#{animalCtrl.animal.peso}"
-							onkeyup="somenteNumeros(this);" />
-						<h:outputLabel value="Peso (kg)" />
-					</div>
-
-					<div class="input-field col s12">
-						<h:selectOneListbox id="advanced" value="#{alimentoCtrl.alimento}"
-							var="alimento" filter="true" filterMatchMode="contains">
-							<f:selectItems value="#{alimentoCtrl.listaAlimento}"
-								var="alimento" itemLabel="#{alimento.nome}"
-								itemValue="#{alimento}" />
-
-							<h:column>
-								<h:outputText value="#{alimento.nome}" />
-							</h:column>
-						</h:selectOneListbox>
-						<h:outputLabel value="Selecione a alimentação mais adequada" />
-					</div>
-				</div>
-
-				<div class="card-action right-align">
-					<h:commandButton class="waves-effect waves-green btn"
-						value="Cadastrar" action="#{tarefaCtrl.salvar()}"
-						onclick="alert('Pressione ok para confimar o cadastro')" />
-
-					<!-- Problema na hora de volta para login -->
-					<h:commandButton class="waves-effect waves-red btn red"
-						value="Cancelar" action="indexAdmin" />
-
 				</div>
 			</div>
-		</div>
+		</h:form>
 	</div>
 
 	<script src="../resources/js/jquery-3.2.1.min.js"></script>
@@ -130,6 +119,12 @@
 			        }
 			    }
  			</script>
+
+	<script>
+				jQuery(function($){
+					$(".campoData").mask("99/99/9999");
+				});
+			</script>
 
 </ui:composition>
 </html>

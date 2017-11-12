@@ -1,9 +1,69 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-	<ui:composition template="">
+<h:body>
+	<ui:composition template="../template/common2.xhtml">
+		<ui:define name="content">
+			<div class="container3">
+				<div class="container">
+					<div class="col s12 m6 l9">
+						<br />
+						<h5 style="color: #26a69a;">Bem vindo</h5>
+						<br />
+						<h:panelGrid>
+							<h:form>
+
+								<h:dataTable var="tarefa" value="#{tarefaCtrl.listaTarefa}"
+									styleClass="striped centered bordered" headerClass="cabecalho"
+									columnClasses="">
+									<h:column>
+										<f:facet name="header">#</f:facet>
+										<h:outputText value="#{tarefa.id}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Descrição</f:facet>
+										<h:outputText value="#{tarefa.descricao}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Data para realização</f:facet>
+										<h:outputText value="#{tarefa.dataHoraRealizacao}">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:outputText>
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Data de término</f:facet>
+										<h:outputText value="#{tarefa.dataLimite}">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:outputText>
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Responsável</f:facet>
+										<h:outputText value="#{tarefa.user.nome}" />
+									</h:column>
+								</h:dataTable>
+							</h:form>
+						</h:panelGrid>
+					</div>
+				</div>
+			</div>
+
+			<script src="../resources/js/jquery-3.2.1.min.js"></script>
+			<script src="../resources/js/materialize.js"></script>
+			<script src="../resources/js/init.js"></script>
+			<script>
+			 $(document).ready(function(){
+				    $('.collapsible').collapsible();
+				  });
+			</script>
+
+		</ui:define>
 	</ui:composition>
+</h:body>
 </html>

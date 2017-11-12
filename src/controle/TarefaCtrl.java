@@ -1,12 +1,12 @@
 package controle;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.event.ActionEvent;
-import javax.swing.plaf.synth.SynthSeparatorUI;
+import javax.faces.context.FacesContext;
 
 import dao.TarefaDAO;
 import dao.UsuarioDAO;
@@ -14,7 +14,6 @@ import daoImplementation.TarefaDAOimp;
 import daoImplementation.UsuarioDAOimp;
 import modelo.Tarefa;
 import modelo.Usuario;
-import util.MessageUtil;
 
 @ManagedBean
 @SessionScoped
@@ -51,7 +50,7 @@ public class TarefaCtrl {
 
 	public void salvar() {
 		TarefaDAO tarefadao = new TarefaDAOimp();
-		UsuarioDAO usuariodao = new UsuarioDAOimp();
+		// UsuarioDAO usuariodao = new UsuarioDAOimp();
 
 		tarefa.getUser().setListaTarefas((ArrayList<Tarefa>) listaTarefa);
 
@@ -64,24 +63,55 @@ public class TarefaCtrl {
 	public void removerPermanente(Tarefa tarefa) {
 
 		TarefaDAO tarefadao = new TarefaDAOimp();
-		UsuarioDAO usuariodao = new UsuarioDAOimp();
+		usuario.getListaTarefas().remove(tarefa);
 
-		tarefa.getUser().setListaTarefas((ArrayList<Tarefa>) listaTarefa);
+		UsuarioDAO usuariodao = new UsuarioDAOimp();
+		usuariodao.update(usuario);
 
 		tarefadao.delete(tarefa);
 
 	}
 
-	public void editar(Tarefa tarefa) {
+//	public void editar(Tarefa tarefa) {
+//		
+//		this.tarefa = tarefa;
+//		
+//		String url = "administrador/cadastrarTarefas.xhtml";
+//		try {
+//			FacesContext.getCurrentInstance().getExternalContext().dispatch(url);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//		
+//		
+//		//return 
+//
+//	}
+	
+public void editar() {
+		
+		
+		String url = "administrador/cadastrarTarefas.xhtml";
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().dispatch(url);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		this.tarefa = tarefa;
+		
+		
+		//return 
 
 	}
-	
-//	 public void mostrarTRF(ActionEvent evento) {
-//	        this.tarefa = (Tarefa) evento.getComponent().getAttributes().get("tarefaexibir");
-//	        MessageUtil.MensagemSucesso( tarefa.getDescricao());
-//	        System.out.println("joel: " + tarefa.getDescricao());
-//	 }
+
+	// public void mostrarTRF(ActionEvent evento) {
+	// this.tarefa = (Tarefa)
+	// evento.getComponent().getAttributes().get("tarefaexibir");
+	// MessageUtil.MensagemSucesso( tarefa.getDescricao());
+	// System.out.println("joel: " + tarefa.getDescricao());
+	// }
 
 }

@@ -1,9 +1,62 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-	<ui:composition template="">
+<h:body>
+	<ui:composition template="../template/common2.xhtml">
+		<ui:define name="content">
+			<div class="container3">
+				<div class="container">
+					<div class="col s12 m6 l9">
+						<br />
+						<h5 style="color: #26a69a;">Bem vindo</h5>
+						<br />
+						<h:panelGrid>
+							<h:form>
+								<h:dataTable var="animal" value="#{animalCtrl.listaAnimal}"
+									styleClass="striped centered bordered" headerClass="cabecalho"
+									columnClasses="">
+									<h:column>
+										<f:facet name="header">#</f:facet>
+										<h:outputText value="#{animal.id}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Raça/Linhagem</f:facet>
+										<h:outputText value="#{animal.raca}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Apelido</f:facet>
+										<h:outputText value="#{animal.apelido}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Altura (m)</f:facet>
+										<h:outputText value="#{animal.altura}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Peso (kg)</f:facet>
+										<h:outputText value="#{animal.peso}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">Data de nascimento</f:facet>
+										<h:outputText value="#{animal.dataNascimento}">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:outputText>
+									</h:column>
+								</h:dataTable>
+							</h:form>
+						</h:panelGrid>
+					</div>
+				</div>
+			</div>
+
+		</ui:define>
 	</ui:composition>
+</h:body>
 </html>

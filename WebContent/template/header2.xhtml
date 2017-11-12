@@ -9,32 +9,32 @@
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 		rel="stylesheet" />
-	<link href="resources/css/materialize.css" type="text/css"
+	<link href="../resources/css/materialize.css" type="text/css"
 		rel="stylesheet" media="screen,projection" />
-	<link href="resources/css/style.css" type="text/css" rel="stylesheet"
-		media="screen,projection" />
+	<link href="../resources/css/style.css" type="text/css"
+		rel="stylesheet" media="screen,projection" />
 	<link rel="shortcut icon" type="image/x-icon"
 		href="../resources/imagens/faviconNK.ico" />
+	<script src="../resources/js/jquery-3.2.1.min.js"></script>
+	<script src="../resources/js/materialize.js"></script>
+	<script src="../resources/js/init.js"></script>
+	<script src="../resources/js/jquery.maskedinput.min.js"></script>
+	<script src="../resources/js/jquery.inputmask.date.extensions.js"></script>
 </h:head>
 
 <h:body>
-	<h:form>
+	<form>
 		<nav class="white" role="navigation">
 		<div class="nav-wrapper container">
-			<h:commandLink action="index" class="brand-logo">Nurture Keep</h:commandLink>
+			<a href="../home/principal.xhtml" class="brand-logo">Nurture Keep</a>
 			<ul class="right hide-on-med-and-down">
 				<li></li>
-				<li><h:commandLink immediate="true"
-						action="#{loginCtrl.sair()}">Logout</h:commandLink></li>
+				<li><a
+					onclick="document.location='#{request.contextPath}/j_spring_security_logout'"
+					title="Logout">Logout</a></li>
 			</ul>
-
-			<ul id="nav-mobile" class="side-nav">
-				<li><a href="#">Cadastra-se</a></li>
-			</ul>
-			<a href="#" data-activates="nav-mobile" class="button-collapse"><i
-				class="material-icons">menu</i></a>
 		</div>
 		</nav>
-	</h:form>
+	</form>
 </h:body>
 </html>

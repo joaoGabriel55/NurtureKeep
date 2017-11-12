@@ -15,7 +15,8 @@
 						<br />
 						<h:panelGrid>
 							<h:form>
-
+								<!--<h:inputText styleClass="input-search" alt="lista-clientes"
+									placeholder="Buscar nesta lista" />  -->
 								<h:dataTable var="tarefa" value="#{tarefaCtrl.listaTarefa}"
 									styleClass="striped centered bordered" headerClass="cabecalho"
 									columnClasses="">
@@ -26,21 +27,7 @@
 
 									<h:column>
 										<f:facet name="header">Descrição</f:facet>
-										<a class="btn orange" href="#modal2">Ver descrição</a>
-										<div id="modal2" class="modal">
-											<div class="modal-content">
-												<h4
-													style="font-size: 20px; text-align: left; color: #26a69a;">Detalhes
-													da descrição</h4>
-												<hr />
-												<h:outputText value="#{tarefa.descricao}"
-													style="margin-right: 55%;" />
-											</div>
-											<div class="modal-footer">
-												<a href="#!"
-													class="modal-action modal-close waves-green btn-flat">Voltar</a>
-											</div>
-										</div>
+										<h:outputText value="#{tarefa.descricao}" />
 									</h:column>
 
 									<h:column>
@@ -65,7 +52,8 @@
 									<h:column>
 										<div class="card-action right-align">
 											<h:commandLink class="btn-floating btn-small orange"
-												style="margin-left:60%;">
+												style="margin-left:60%;"
+												action="#{tarefaCtrl.editar2}">
 												<i class="large material-icons">mode_edit</i>
 											</h:commandLink>
 
@@ -97,7 +85,8 @@
 					</div>
 				</div>
 			</div>
-
+			<script type="text/javascript"
+				src="../resources/js/jquery.quick.search.js"></script>
 			<script src="../resources/js/jquery-3.2.1.min.js"></script>
 			<script src="../resources/js/materialize.js"></script>
 			<script src="../resources/js/init.js"></script>
@@ -106,6 +95,26 @@
 				    $('.collapsible').collapsible();
 				  });
 			</script>
+			<script>
+						$(function(){
+			    $(".input-search").keyup(function(){
+			        //pega o css da tabela 
+			        var tabela = $(this).attr('alt');
+			        if( $(this).val() != ""){
+			            $("."+tabela+" h:dataTable>h:column").hide();
+			            $("."+tabela+" h:outputText:contains-ci('" + $(this).val() + "')").parent("h:column").show();
+			        } else{
+			            $("."+tabela+" h:dataTable>h:column").show();
+			        }
+			    }); 
+			});
+			
+			$.extend($.expr[":"], {
+			    "contains-ci": function(elem, i, match, array) {
+			        return (elem.textContent || elem.innerText || $(elem).text() || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+			    }
+			});
+		</script>
 
 		</ui:define>
 	</ui:composition>

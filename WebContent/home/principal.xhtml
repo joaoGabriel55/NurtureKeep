@@ -14,7 +14,8 @@
 						rendered="#{request.isUserInRole('ROLE_ADMINISTRADOR')}">
 						<div class="col s12 m12 l9">
 							<br />
-							<h5 style="color: #26a69a;">Bem vindo</h5>
+							<h5 style="color: #26a69a;">Bem vindo Administrador, Usuário
+								logado, email: #{request.remoteUser}</h5>
 							<br />
 							<h:form>
 								<div id="card-container" class="row">
@@ -89,81 +90,87 @@
 					<h:panelGroup rendered="#{request.isUserInRole('ROLE_USUARIO')}">
 						<div class="col s12 m12 l9">
 							<br />
-							<h5 style="color: #26a69a;">Bem vindo</h5>
+							<h5 style="color: #26a69a;">Bem vindo, Usuário logado,
+								email: #{request.remoteUser}</h5>
 							<br />
 
-							<div id="card-container" class="row">
-								<!-- Col: Card 1 -->
-								<div class="col s12 m6 l4">
-									<!-- Card 1 -->
-									<div class="card white">
-										<div class="card-content white-text">
+							<h:form>
+								<div id="card-container" class="row">
+									<!-- Col: Card 1 -->
+									<div class="col s12 m6 l4">
+										<!-- Card 1 -->
+										<div class="card white">
+											<div class="card-content white-text">
 
-											<span class="card-title cyan-text text-darken-3"><i
-												class="small material-icons">assignment</i>Tarefas</span>
+												<span class="card-title cyan-text text-darken-3"><i
+													class="small material-icons">assignment</i>Tarefas</span>
 
-											<p class="card-subtitle grey-text text-darken-2">Tarefas
-												a serem realizadas ao longo do dia.</p>
+												<p class="card-subtitle grey-text text-darken-2">Tarefas
+													a serem realizadas ao longo do dia.</p>
 
+											</div>
+											<div class="card-action">
+												<h:commandLink action="/usuario/verTarefas">Ver tarefas</h:commandLink>
+
+
+											</div>
 										</div>
-										<div class="card-action">
-											<a href="#">Ver tarefas</a>
-
-										</div>
+										<!-- End of card -->
 									</div>
-									<!-- End of card -->
-								</div>
-								<!-- End of col -->
-								<!-- Col: Card 1 -->
-								<div class="col s12 m6 l4">
-									<!-- Card 1 -->
-									<div class="card white">
-										<div class="card-content white-text">
+									<!-- End of col -->
+									<!-- Col: Card 1 -->
+									<div class="col s12 m6 l4">
+										<!-- Card 1 -->
+										<div class="card white">
+											<div class="card-content white-text">
 
-											<span class="card-title cyan-text text-darken-3"><i
-												class="small material-icons">list</i>Alimentos</span>
+												<span class="card-title cyan-text text-darken-3"><i
+													class="small material-icons">list</i>Alimentos</span>
 
-											<p class="card-subtitle grey-text text-darken-2">
-												Alimentos para os animais, que estão disponíveis no estoque.
+												<p class="card-subtitle grey-text text-darken-2">
+													Alimentos para os animais, que estão disponíveis no
+													estoque.</p>
 
-											</p>
-
+											</div>
+											<div class="card-action">
+												<h:commandLink action="/usuario/verAlimentos"
+													value="VER ALIMENTOS" />
+											</div>
 										</div>
-										<div class="card-action">
-											<h:commandLink action="/usuario/verAlimentos"
-												value="VER ALIMENTOS" />
-										</div>
+										<!-- End of card -->
 									</div>
-									<!-- End of card -->
-								</div>
-								<!-- Col: Card 1 -->
-								<div class="col s12 m6 l4">
-									<!-- Card 1 -->
-									<div class="card white">
-										<div class="card-content white-text">
+									<!-- Col: Card 1 -->
+									<div class="col s12 m6 l4">
+										<!-- Card 1 -->
+										<div class="card white">
+											<div class="card-content white-text">
 
-											<span class="card-title cyan-text text-darken-3"><i
-												class="small material-icons">pageview</i>Animais</span>
+												<span class="card-title cyan-text text-darken-3"><i
+													class="small material-icons">pageview</i>Animais</span>
 
-											<p class="card-subtitle grey-text text-darken-2">Veja as
-												características de cada animal e sua situação atual.</p>
+												<p class="card-subtitle grey-text text-darken-2">Veja as
+													características de cada animal e sua situação atual.</p>
 
+											</div>
+											<div class="card-action">
+												<h:commandLink action="/usuario/verAnimais">Ver alimentos</h:commandLink>
+
+											</div>
 										</div>
-										<div class="card-action">
-											<a href="#">VER ANIMAIS</a>
-										</div>
+										<!-- End of card -->
 									</div>
-									<!-- End of card -->
-								</div>
 
-							</div>
+								</div>
+							</h:form>
+
 						</div>
 					</h:panelGroup>
 
 					<h:panelGroup rendered="#{request.isUserInRole('ROLE_FORNECEDOR')}">
 						<div class="col s12 m6 l9">
 							<br />
-							<h5 style="color: #26a69a;">Bem vindo</h5>
+							<h5 style="color: #26a69a;">Bem vindo Fornecedor, Usuário
+								logado, email: #{request.remoteUser}</h5>
 							<br />
 							<h:form>
 								<h:dataTable var="alimento"
