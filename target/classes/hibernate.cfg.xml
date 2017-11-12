@@ -6,7 +6,7 @@
 	<session-factory>
 
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
-		<property name="connection.datasource">java:/comp/env/jdbc/NurtureKeepDB</property>
+		<property name="connection.datasource">java:/comp/env/jdbc/nurturekeep</property>
 		<property name="current_session_context_class">thread</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
 
