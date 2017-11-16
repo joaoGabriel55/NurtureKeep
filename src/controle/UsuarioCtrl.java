@@ -13,7 +13,9 @@ import modelo.Usuario;
 
 @ManagedBean
 @SessionScoped
-public class UsuarioCtrl {
+
+/**Template Method*/
+public class UsuarioCtrl extends TemplateCtrl {
 
 	private Usuario usuario = new Usuario();
 	private List<Usuario> listausers;
@@ -69,12 +71,12 @@ public class UsuarioCtrl {
 		this.destinoSalvar = destinoSalvar;
 	}
 
+	@Override
 	public String salvar() {
 
 		FacesContext context = FacesContext.getCurrentInstance();
 
-		String senha = this.usuario.getSenha();
-		if (!senha.equals(this.confirmarSenha)) {
+		if (!this.usuario.getSenha().equals(this.confirmarSenha)) {
 			FacesMessage facesMessage = new FacesMessage("A senha não foi confirmada corretamente");
 			context.addMessage(null, facesMessage);
 			return null;
@@ -84,9 +86,7 @@ public class UsuarioCtrl {
 
 		usuariodao.save(this.usuario);
 
-		this.usuario = new Usuario();
-
-		return this.destinoSalvar;
+		return "publico/login.xhtml?faces-redirect=true";
 	}
 
 	// public void remover(Usuario usuario) {
@@ -103,6 +103,7 @@ public class UsuarioCtrl {
 
 	}
 
+	@Override
 	public String editar() {
 		this.confirmarSenha = "";
 		usuario.setSenha("");

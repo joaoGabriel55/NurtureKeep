@@ -20,6 +20,12 @@ public class Fornecedor extends Pessoa implements Serializable {
 	 * 
 	 */
 
+	/**
+	 * Singleton. Criar apenas uma instancia do objeto
+	 * 
+	 */
+	private static Fornecedor instance = new Fornecedor();
+
 	@Column(nullable = false, length = 50)
 	private String empresa;
 
@@ -44,8 +50,15 @@ public class Fornecedor extends Pessoa implements Serializable {
 		this.listaAlimento = listaAlimento;
 	}
 
-	public Fornecedor() {
-		this.endereco = new Endereco();
+	/**
+	 * 
+	 * Faz um construtor privado para que a classe não possa ser instanciada.
+	 */
+	private Fornecedor() {
+	}
+
+	public static Fornecedor getInstance() {
+		return instance;
 	}
 
 	public String getEmpresa() {
@@ -125,6 +138,16 @@ public class Fornecedor extends Pessoa implements Serializable {
 		} else if (!listaAlimento.equals(other.listaAlimento))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Fornecedor [empresa=" + empresa + ", cnpj=" + cnpj + ", endereco=" + endereco + ", listaAlimento="
+				+ listaAlimento + ", getNome()=" + getNome() + ", getEmail()=" + getEmail() + ", getCpf()=" + getCpf()
+				+ ", getDataNascimento()=" + getDataNascimento() + ", getTelefone()=" + getTelefone() + ", getSenha()="
+				+ getSenha() + ", getDataRemocao()=" + getDataRemocao() + ", getIdPessoa()=" + getIdPessoa()
+				+ ", getAtivo()=" + getAtivo() + ", getRole()=" + getRole() + ", getClass()=" + getClass()
+				+ ", toString()=" + super.toString() + "]";
 	}
 
 }

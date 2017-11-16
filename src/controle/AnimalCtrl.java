@@ -41,7 +41,7 @@ public class AnimalCtrl {
 	public void setListaAnimal(List<Animal> listaAnimal) {
 		this.listaAnimal = listaAnimal;
 	}
-	
+
 	public void salvar() {
 		AnimalDAO animaldao = new AnimalDAOimp();
 
@@ -62,6 +62,5 @@ public class AnimalCtrl {
 		this.animal = animal;
 
 	}
-
 
 }

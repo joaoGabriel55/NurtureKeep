@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 
 import dao.FornecedorDAO;
 import daoImplementation.FornecedorDAOimp;
+import modelo.Endereco;
 import modelo.Fornecedor;
 
 @ManagedBean
@@ -23,13 +24,15 @@ public class FornecedorCtrl {
 
 	public FornecedorCtrl() {
 		this.destinoSalvar = "fornecedorsucesso";
-		this.fornecedor = new Fornecedor();
+		this.fornecedor = Fornecedor.getInstance();
+		this.fornecedor.setEndereco(new Endereco());
 		this.fornecedor.setAtivo(true);
 	}
 
 	public String novo() {
 		this.destinoSalvar = "usuariosucesso";
-		this.fornecedor = new Fornecedor();
+		this.fornecedor = Fornecedor.getInstance();
+		this.fornecedor.setEndereco(new Endereco());
 		this.fornecedor.setAtivo(true);
 		return "/publico/cadastrarFornecedor";
 	}
@@ -74,8 +77,8 @@ public class FornecedorCtrl {
 
 		FacesContext context = FacesContext.getCurrentInstance();
 
-		String senha = this.fornecedor.getSenha();
-		if (!senha.equals(this.confirmarSenha)) {
+	
+		if (!this.fornecedor.getSenha().equals(this.confirmarSenha)) {
 			FacesMessage facesMessage = new FacesMessage("A senha não foi confirmada corretamente");
 			context.addMessage(null, facesMessage);
 			return null;
@@ -86,9 +89,10 @@ public class FornecedorCtrl {
 
 		fornecedordao.save(this.fornecedor);
 
-		this.fornecedor = new Fornecedor();
+		novo();
+		
+		return "publico/login.xhtml?faces-redirect=true";
 
-		return this.destinoSalvar;
 	}
 
 	public void removerPermanente(Fornecedor fornecedor) {

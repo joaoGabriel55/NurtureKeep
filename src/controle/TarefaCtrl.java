@@ -50,11 +50,9 @@ public class TarefaCtrl {
 
 	public void salvar() {
 		TarefaDAO tarefadao = new TarefaDAOimp();
-		// UsuarioDAO usuariodao = new UsuarioDAOimp();
 
 		tarefa.getUser().setListaTarefas((ArrayList<Tarefa>) listaTarefa);
 
-		// usuariodao.save(this.usuario);
 		tarefadao.save(this.tarefa);
 
 		this.tarefa = new Tarefa();
@@ -72,27 +70,8 @@ public class TarefaCtrl {
 
 	}
 
-//	public void editar(Tarefa tarefa) {
-//		
-//		this.tarefa = tarefa;
-//		
-//		String url = "administrador/cadastrarTarefas.xhtml";
-//		try {
-//			FacesContext.getCurrentInstance().getExternalContext().dispatch(url);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//		
-//		
-//		//return 
-//
-//	}
-	
-public void editar() {
-		
-		
+	public void editar() {
+
 		String url = "administrador/cadastrarTarefas.xhtml";
 		try {
 			FacesContext.getCurrentInstance().getExternalContext().dispatch(url);
@@ -101,17 +80,6 @@ public void editar() {
 			e.printStackTrace();
 		}
 
-		
-		
-		//return 
-
 	}
-
-	// public void mostrarTRF(ActionEvent evento) {
-	// this.tarefa = (Tarefa)
-	// evento.getComponent().getAttributes().get("tarefaexibir");
-	// MessageUtil.MensagemSucesso( tarefa.getDescricao());
-	// System.out.println("joel: " + tarefa.getDescricao());
-	// }
 
 }
