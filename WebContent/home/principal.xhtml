@@ -90,8 +90,7 @@
 					<h:panelGroup rendered="#{request.isUserInRole('ROLE_USUARIO')}">
 						<div class="col s12 m12 l9">
 							<br />
-							<h5 style="color: #26a69a;">Bem vindo, Usuário logado,
-								email: #{request.remoteUser}</h5>
+							<h5 style="color: #26a69a;">Bem vindo, #{request.remoteUser}</h5>
 							<br />
 
 							<h:form>

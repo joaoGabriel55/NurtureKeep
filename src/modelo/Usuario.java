@@ -89,4 +89,15 @@ public class Usuario extends Pessoa implements Serializable {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Usuario [getNome()=" + getNome() + ", getEmail()=" + getEmail() + ", getCpf()=" + getCpf()
+				+ ", getDataNascimento()=" + getDataNascimento() + ", getTelefone()=" + getTelefone() + ", getSenha()="
+				+ getSenha() + ", getDataRemocao()=" + getDataRemocao() + ", getIdPessoa()=" + getIdPessoa()
+				+ ", getAtivo()=" + getAtivo() + ", getRole()=" + getRole() + ", getClass()=" + getClass()
+				+ ", toString()=" + super.toString() + "]";
+	}
+	
+	
+
 }

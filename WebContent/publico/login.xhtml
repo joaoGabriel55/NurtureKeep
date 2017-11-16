@@ -11,11 +11,12 @@
 
 			<form id="login" method="post"
 				action="#{request.contextPath}/j_spring_security_check">
-				<div class="container">
+				<div class="container" style="padding-left: 10%; padding-right: 10%;">
 					<div class="card-panel white"
-						style="margin-right: 100px; margin-bottom: 30px; margin-top: 30px; margin-left: 100px; padding-bottom: 62px;">
+						style="margin-right: 100px; margin-bottom: 30px; margin-top: 30px; margin-left: 100px; padding-bottom: 15%; padding-left: 5%;">
 						<h5 class="card-title"
 							style="color: #26a69a; text-align: center; font-size: 28px">Login</h5>
+							<hr style="color: #FFF9;"/>
 						<h:panelGroup rendered="#{!empty param.login_error}">
 							<span style="color: red; margin-left: 40%;"> Erro ao
 								efetuar o login.</span>
@@ -26,22 +27,26 @@
 						<div class="header center black-text text-lighten-1">
 
 							<div class="row">
-								<div class="input-field col s6" style="margin-left: 25%;">
+								<div class="input-field col s10" style="margin-left: 8%;">
 									<input id="email" type="text" name='j_username'
 										class="validate" /> <label for="email">Email</label>
 								</div>
 							</div>
 							<div class="row">
-								<div class="input-field col s6" style="margin-left: 25%;">
+								<div class="input-field col s10" style="margin-left: 8%;">
 									<input id="senha" type="password" name='j_password'
 										class="validate" /> <label for="senha">Senha</label>
 								</div>
 							</div>
 						</div>
 						<div class="card-action row center">
-							<input value="Entrar"
-								class="waves-effect waves-light btn-large center" type="submit" />
+							<button value="Entrar"
+								class="waves-effect waves-light btn center" type="submit" style="padding-left: 32%; padding-right: 32%;">Entrar
+							</button>
 						</div>
+						<h:form>
+							<a href="publico/selecao.xhtml" style="margin-left: 25%; color: orange;" >Não possui cadastro? Clique aqui</a>
+						</h:form>
 					</div>
 				</div>
 			</form>
@@ -51,25 +56,24 @@
 			<script src="resources/js/materialize.js"></script>
 			<script src="resources/js/init.js"></script>
 			<script>
-				$(document).ready(function(){
-				      $('.parallax').parallax();
-				    });
+				$(document).ready(function() {
+					$('.parallax').parallax();
+				});
 			</script>
 
 			<script>
 				$('.modal').modal({
-				      dismissible: true, // Modal can be dismissed by clicking outside of the modal
-				      opacity: .5, // Opacity of modal background
-				      inDuration: 300, // Transition in duration
-				      outDuration: 200, // Transition out duration
-				      startingTop: '4%', // Starting top style attribute
-				      endingTop: '10%', // Ending top style attribute
-				      ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-				        
-				        console.log(modal, trigger);
-				      }
-				    }
-				  );
+					dismissible : true, // Modal can be dismissed by clicking outside of the modal
+					opacity : .5, // Opacity of modal background
+					inDuration : 300, // Transition in duration
+					outDuration : 200, // Transition out duration
+					startingTop : '4%', // Starting top style attribute
+					endingTop : '10%', // Ending top style attribute
+					ready : function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+
+						console.log(modal, trigger);
+					}
+				});
 			</script>
 		</ui:define>
 	</ui:composition>

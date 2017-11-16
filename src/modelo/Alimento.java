@@ -402,4 +402,15 @@ public class Alimento implements Serializable {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Alimento [id=" + id + ", fornecedor=" + fornecedor + ", nome=" + nome + ", quantidade=" + quantidade
+				+ ", peso=" + peso + ", preco=" + preco + ", validade=" + validade + ", fabricacao=" + fabricacao
+				+ ", carboidratos=" + carboidratos + ", proteinas=" + proteinas + ", gordurasTotais=" + gordurasTotais
+				+ ", fibraAlimentar=" + fibraAlimentar + ", sodio=" + sodio + ", valorEnergetico=" + valorEnergetico
+				+ ", dataRemocao=" + dataRemocao + "]";
+	}
+	
+	
+
 }
